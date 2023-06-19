@@ -1,0 +1,26 @@
+name: Copyright Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  copyright-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check for Copyright
+        run: |
+          find . -name '*.rs' | while read file; do
+            if ! cmp -s <(head -n 5 "$file") copyright.txt; then
+              echo "Missing or incorrect copyright in $file"
+              exit 1
+            fi
+          done
