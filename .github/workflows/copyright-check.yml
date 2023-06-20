@@ -20,6 +20,8 @@ jobs:
         run: |
           find . -name '*.rs' | while read file; do
             if ! cmp -s <(head -n 5 "$file") copyright.txt; then
+              echo cmp -s <(head -n 5 "$file")
+              echo copyright.txt
               echo "Missing or incorrect copyright in $file"
               exit 1
             fi
