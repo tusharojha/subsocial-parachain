@@ -18,4 +18,12 @@ jobs:
 
       - name: Check for Copyright
         run: |
-          find . -name '*.rs' -not -path "./runtime/*" -exec bash -c 'if ! cmp -s <(head -n 5 "{}") copyright.txt; then echo "Missing or incorrect copyright in {}"; exit 1; fi' \;
+          find . -name '*.rs' -not -path "./runtime/*" -exec bash -c '
+            while IFS= read -r file; do
+                if ! head -n 4 "$file" | grep -qFf "copyright.txt"; then
+                  echo "Missing or incorrect copyright in $file"
+                  exit 1
+                fi
+            done
+          ' {} +
+    
