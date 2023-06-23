@@ -3,13 +3,3 @@
 
 // Full notice is available at https://github.com/dappforce/subsocial-parachain/blob/main/HEADER-GPL3. 
 // Full license is available at https://github.com/dappforce/subsocial-parachain/blob/main/LICENSE.
-
-use substrate_wasm_builder::WasmBuilder;
-
-fn main() {
-	WasmBuilder::new()
-		.with_current_project()
-		.export_heap_base()
-		.import_memory()
-		.build()
-}
