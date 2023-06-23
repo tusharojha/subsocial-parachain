@@ -2,11 +2,7 @@ name: Copyright Check
 
 on:
   push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   copyright-check:
@@ -20,7 +16,7 @@ jobs:
         run: |
           find . -name '*.rs' -not -path "./runtime/*" -exec bash -c '
             for file do
-                if ! head -n 4 "$file" | grep -qFf "copyright.txt"; then
+                if ! sed -n '1,4p' "$file" | grep -qFf "copyright.txt"; then
                     echo "Missing or incorrect copyright in $file"
                     exit 1
                 fi
