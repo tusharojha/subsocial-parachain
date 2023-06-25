@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Copyright Comment Check
-        uses: tusharojha/copyright-check-action
+        uses: tusharojha/copyright-check-action@master
         with: 
           path: './**/*.rs'
           exclude: 'runtime'
