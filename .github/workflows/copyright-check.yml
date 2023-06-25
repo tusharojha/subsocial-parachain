@@ -15,8 +15,9 @@ jobs:
       - name: Copyright Comment Check
         uses: tusharojha/copyright-check-action
         with: 
-          path: './'
+          path: './**/*.rs'
           exclude: 'runtime'
+          copyrightPath: 'copyright.txt'
 
       
     
