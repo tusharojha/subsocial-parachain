@@ -16,7 +16,7 @@ jobs:
         uses: tusharojha/copyright-check-action@master
         with: 
           path: './**/*.rs'
-          exclude: 'runtime'
+          exclude: './runtime'
           copyrightPath: 'copyright.txt'
 
       
